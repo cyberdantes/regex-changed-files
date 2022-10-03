@@ -78,7 +78,7 @@ async function run(): Promise<void> {
     // Get the changed files from the response payload.
     const files = response.data.files;
     const result = files.some(i=>regex.test(i.filename));
-    core.setOutput('match', result);      
+    core.setOutput('match', result.toString());      
   } catch (error) {
     core.setFailed(error.message)
   }
