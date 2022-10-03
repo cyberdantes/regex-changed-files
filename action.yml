@@ -1,9 +1,9 @@
 name: Get All Changed Files
 description: Get all of the files changed/modified in a pull request or push's commits.
-author: Jitterbit, Inc.
+author: Meyisoft OU, Inc.
 branding:
-  icon: file
-  color: purple
+  icon: join_inner
+  color: blue
 runs:
   using: node12
   main: dist/index.js
@@ -14,32 +14,12 @@ inputs:
       Users shouldn't need to set this themselves.
     required: true
     default: ${{ github.token }}
-  format:
+  regex:
     description: >
-      Format of the steps output context.
-      Can be 'space-delimited', 'csv', or 'json'.
+      String regular expression to compare against the full paths of the commit file list
     required: true
-    default: space-delimited
+    default: .
 outputs:
-  all:
+  match:
     description: >
-      Array of all changed files.
-  added:
-    description: >
-      Array of added files.
-  modified:
-    description: >
-      Array of modified files.
-  removed:
-    description: >
-      Array of removed files.
-  renamed:
-    description: >
-      Array of renamed files.
-  added_modified:
-    description: >
-      Array of all added and modified files.
-  # For backwards-compatibility
-  deleted:
-    description: >
-      Array of deleted files.
+      boolean indicating if any filepath math the regular expression provided  
